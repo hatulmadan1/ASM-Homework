@@ -1,11 +1,10 @@
-; arguments order: edi, esi, edx, ecx, r8d, r9d
                 section         .text
 
                 global          _start
 _start:
 
-                sub             rsp, 2 * 128 * 8       ; go back from current stack frame by 2 * 128 qwords
-                lea             rdi, [rsp + 128 * 8]   ; rdi = current stack frame - 128 qwords
+                sub             rsp, 2 * 128 * 8       
+                lea             rdi, [rsp + 128 * 8]   
                 mov             rcx, 128			   ; rcx = 128
                 call            read_long			   ; first long of length 128 is placed in csf - 128 to csf
                 mov             rdi, rsp			   ; rdi = csf - 2*128
